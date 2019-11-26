@@ -1,0 +1,13 @@
+.list {
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__loading-shade {
+    display: flex;
+    justify-content: center;
+    align-items: center
+  }
+}

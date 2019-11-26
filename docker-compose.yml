@@ -1,0 +1,41 @@
+version: "3.4"
+services:
+  sa-eureka:
+    image: "sa-eureka"
+    build:
+      context: sa-eureka/
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
+
+  sa-crud:
+    image: "sa-crud"
+    build:
+      context: sa-crud
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    links:
+      - sa-eureka
+    depends_on:
+      - sa-eureka
+
+  sa-consumer:
+    image: "sa-consumer"
+    build:
+      context: sa-consumer
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    links:
+      - sa-eureka
+    depends_on:
+      - sa-eureka
+
+  sa-frontend:
+    container_name: sa-frontend
+    build:
+      context: sa-crud-frontend
+      dockerfile: Dockerfile
+    ports:
+      - '4200:4200'

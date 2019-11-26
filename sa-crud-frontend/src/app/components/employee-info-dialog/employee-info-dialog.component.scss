@@ -1,0 +1,15 @@
+.add-emp-dialog {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+  }
+
+  &__action-buttons-container {
+    justify-content: flex-end;
+  }
+
+  &__button {
+    margin-left: 5px;
+  }
+}

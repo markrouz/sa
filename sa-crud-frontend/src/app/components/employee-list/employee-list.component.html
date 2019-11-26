@@ -1,0 +1,79 @@
+<div class="list__container">
+  <mat-table [dataSource]="employees">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>name</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="surname">
+      <mat-header-cell *matHeaderCellDef>surname</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.surname}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="patronymic">
+      <mat-header-cell *matHeaderCellDef>patronymic</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.patronymic}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="department">
+      <mat-header-cell *matHeaderCellDef>
+        department
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.department}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef>
+        position
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.position}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="employmentDate">
+      <mat-header-cell *matHeaderCellDef>
+        employmentDate
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.employmentDate}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="firedDate">
+      <mat-header-cell *matHeaderCellDef>
+        firedDate
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.firedDate}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-button (click)="deleteEmployee(row)">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+        </button>
+        <button mat-button (click)="editEmployee(row)">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-card class="list__loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    <div class="list__rate-limit-reached-message" *ngIf="isRateLimitReached">
+      Server is not responding
+    </div>
+  </mat-card>
+  <mat-paginator [length]="resultsLength" [pageSize]="pageSize"></mat-paginator>
+  <button mat-button mat-raised-button (click)="openAddEmployeeDialog()">Add new employee</button>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <h3>Employees statistic</h3>
+    </mat-card-header>
+    <mat-card-content>
+      Average work period (in days): {{avgWorkPeriod}}
+      <br/><br/>
+      Most popular departments: {{mostPopularDepartments}}
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: sa-consumer
+server:
+  port: 8081
+eureka:
+  client:
+    service-url:
+      defaultZone: http://sa-eureka:8761/eureka/,
+                   http://localhost:8761/eureka/
