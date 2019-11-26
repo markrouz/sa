@@ -5,6 +5,5 @@
 * Eureka Server
 * Angular приложение, обеспечивающее вызов CRUD операций и отображающее статистику
 
-Чтобы запустить проект нужно установить Docker и Docker Compose и выполнить docker-compose up
+Чтобы запустить проект нужно установить Docker и Docker Compose и выполнить docker-compose up\
 Чтобы остановить проект достаточно выполнить docker-compose down --rmi all
-
