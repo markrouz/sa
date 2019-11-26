@@ -9,6 +9,6 @@ import lombok.Getter;
 @Getter
 public class ReportDto {
 
-  List<Department> mostPopularDepartments;
-  Double avgWorkPeriod;
+  private List<Department> mostPopularDepartments;
+  private Double avgWorkPeriod;
 }
